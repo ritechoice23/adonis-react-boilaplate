@@ -1,16 +1,13 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
 import mail from '@adonisjs/mail/services/main'
-import PasswordReset from '#models/forgot_password'
 import hash from '@adonisjs/core/services/hash'
-import { dd } from '@adonisjs/core/services/dumper'
 import { DateTime } from 'luxon'
-import app from '@adonisjs/core/services/app'
-import { route } from '@izzyjs/route/client'
+import PasswordReset from '#models/password_reset'
 
-export default class PasswordResetsController {
+export default class ForgotPasswordController {
     async create({ inertia }: HttpContext) {
-        return inertia.render('auth/reset_password')
+        return inertia.render('auth/forgot_password')
     }
 
     async store({ request, response, session }: HttpContext) {
@@ -22,21 +19,24 @@ export default class PasswordResetsController {
         }))
         await validator.validate(request.all())
 
-        const hashToken = await hash.make(Math.random().toString())
+        const hashToken = await Math.random().toString()
         const token = await PasswordReset.create({
             email: request.input('email'),
             token: hashToken,
             expiredAt: DateTime.now().plus({ minutes: 5 }),
         })
 
-        const resetUrl = app.makeURL(route('forgot_password.store', { token: token.token }).toString())
+        const resetUrl = `http://localhost:3333/auth/reset-password/${token.token}`
 
         await mail.send((message) => {
             message
                 .to(request.input('email'))
                 .from('info@example.org')
                 .subject('Reset your password')
-                .text(`Click the link below to reset your password: ${resetUrl}`)
+                .html(`
+                    Click the link below to reset your password: 
+                    <a href="${resetUrl}">Reset Password</a>
+                    `)
         })
         session.flash('success', 'Password reset link successfully sent to your mail.')
         return response.redirect().back()

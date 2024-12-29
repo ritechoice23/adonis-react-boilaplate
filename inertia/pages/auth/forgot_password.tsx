@@ -5,7 +5,7 @@ import { Link, useForm, usePage } from '@inertiajs/react'
 import AuthenticationLayout from '@/layouts/AuthenticationLayout'
 import { route } from '@izzyjs/route/client'
 
-function PasswordReset() {
+function ForgotPassword() {
     const { flash } = usePage().props
     // @ts-ignore
     const message = flash?.success
@@ -70,4 +70,4 @@ function PasswordReset() {
     )
 }
 
-export default PasswordReset
+export default ForgotPassword

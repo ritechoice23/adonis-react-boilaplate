@@ -9,7 +9,8 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
-const PasswordResetsController = () => import('#controllers/auth/password_resets_controller')
+import ResetPasswordsController from '#controllers/auth/reset_passwords_controller'
+const ForgotPasswordController = () => import('#controllers/auth/forgot_password_controller')
 
 const LoginsController = () => import('#controllers/auth/login_controller')
 const RegisterController = () => import('#controllers/auth/register_controller')
@@ -25,12 +26,21 @@ router.get('/login', [LoginsController, 'create']).as('login.create').use(middle
 router.post('/login', [LoginsController, 'store']).as('login.store').use(middleware.guest())
 
 router
-    .get('auth/forgot-password', [PasswordResetsController, 'create'])
+    .get('auth/forgot-password', [ForgotPasswordController, 'create'])
     .as('forgot_password.create')
     .use(middleware.guest())
 
-router.post('auth/forgot-password', [PasswordResetsController, 'store'])
+router.post('auth/forgot-password', [ForgotPasswordController, 'store'])
     .as('forgot_password.store')
+    .use(middleware.guest())
+
+router
+    .get('auth/reset-password/:token', [ResetPasswordsController, 'create'])
+    .as('reset_password.create')
+    .use(middleware.guest())
+
+router.post('auth/reset-password/:token', [ResetPasswordsController, 'store'])
+    .as('reset_password.store')
     .use(middleware.guest())
 
 router
