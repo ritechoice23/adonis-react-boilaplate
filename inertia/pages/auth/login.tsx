@@ -12,16 +12,12 @@ function Login() {
   const { post, data, setData, errors } = useForm({
     email: '',
     password: '',
-    remember_me: null,
+    remember_me: '',
   })
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    return post('/login', {
-      onSuccess: () => {
-        // alert('success')
-      },
-    })
+    return post(route('login.store').toString())
   }
   return (
     <AuthenticationLayout>
@@ -68,7 +64,7 @@ function Login() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <Input
-              onChange={(e) => setData('remember_me', e.target.checked)}
+              onChange={(e) => setData('remember_me', e.target.checked as unknown as string)}
               value={data.remember_me}
               type="checkbox"
               id="remember"
@@ -83,7 +79,7 @@ function Login() {
           </div>
 
           <a
-            href="#"
+            href={route('password_reset.create').toString()}
             className="text-sm text-indigo-600 hover:text-indigo-500"
           >
             Forgot password?

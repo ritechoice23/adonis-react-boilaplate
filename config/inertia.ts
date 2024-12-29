@@ -12,7 +12,7 @@ const inertiaConfig = defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.inertia.always(() => ctx.session?.flashMessages.get('errors')),
-    message: (ctx) => ctx.session?.flashMessages,
+    flash: (ctx) => ctx.session?.flashMessages,
     // @ts-ignore
     auth: (ctx) => {
       return {

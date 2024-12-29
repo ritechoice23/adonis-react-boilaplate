@@ -14,6 +14,6 @@ export default class RegisterController {
     const data = await registerValidator.validate(request.all())
     const user = await User.create(data)
     await auth.use('web').login(user)
-    response.redirect().withQs({ message: 'user created successfully' }).back()
+    response.redirect().back()
   }
 }
