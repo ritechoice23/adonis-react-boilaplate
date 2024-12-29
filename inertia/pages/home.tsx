@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react'
-import ApplicationLogo from './components/ApplicationLogo'
+import ApplicationLogo from '@/components/ApplicationLogo';
 
 export default function Home() {
   return (
