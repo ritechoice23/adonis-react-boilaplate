@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('email').index()
       table.string('token').index()
+      table.timestamp('expired_at').index()
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

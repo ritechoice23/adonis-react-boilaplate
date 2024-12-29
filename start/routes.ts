@@ -25,12 +25,12 @@ router.get('/login', [LoginsController, 'create']).as('login.create').use(middle
 router.post('/login', [LoginsController, 'store']).as('login.store').use(middleware.guest())
 
 router
-    .get('auth/password-reset', [PasswordResetsController, 'create'])
-    .as('password_reset.create')
+    .get('auth/forgot-password', [PasswordResetsController, 'create'])
+    .as('forgot_password.create')
     .use(middleware.guest())
 
-router.post('auth/password-reset', [PasswordResetsController, 'store'])
-    .as('password_reset.store')
+router.post('auth/forgot-password', [PasswordResetsController, 'store'])
+    .as('forgot_password.store')
     .use(middleware.guest())
 
 router

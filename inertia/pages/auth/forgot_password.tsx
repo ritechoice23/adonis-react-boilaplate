@@ -9,13 +9,17 @@ function PasswordReset() {
     const { flash } = usePage().props
     // @ts-ignore
     const message = flash?.success
-    const { post, data, setData, errors } = useForm({
+    const { post, data, setData, errors, reset } = useForm({
         email: '',
     })
 
     const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault()
-        return post(route('password_reset.store').toString())
+        return post(route('forgot_password.store').toString(), {
+            onSuccess: () => {
+                reset()
+            }
+        })
     }
     return (
         <AuthenticationLayout>

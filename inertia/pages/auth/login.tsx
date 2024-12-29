@@ -6,9 +6,9 @@ import AuthenticationLayout from '@/layouts/AuthenticationLayout'
 import { route } from '@izzyjs/route/client'
 
 function Login() {
-  const { flashMessages } = usePage().props
+  const { flash } = usePage().props
   // @ts-ignore
-  const message = flashMessages?.errorsBag
+  const message = flash?.errorsBag
   const { post, data, setData, errors } = useForm({
     email: '',
     password: '',
@@ -79,7 +79,7 @@ function Login() {
           </div>
 
           <a
-            href={route('password_reset.create').toString()}
+            href={route('forgot_password.create').toString()}
             className="text-sm text-indigo-600 hover:text-indigo-500"
           >
             Forgot password?
