@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import AuthenticationLayout from '@/layouts/AuthenticationLayout'
+import { route } from '@izzyjs/route/client'
 
 function Login() {
   const { flashMessages } = usePage().props
@@ -11,6 +12,7 @@ function Login() {
   const { post, data, setData, errors } = useForm({
     email: '',
     password: '',
+    remember_me: null,
   })
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -66,6 +68,8 @@ function Login() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
             <Input
+              onChange={(e) => setData('remember_me', e.target.checked)}
+              value={data.remember_me}
               type="checkbox"
               id="remember"
               className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
@@ -97,7 +101,7 @@ function Login() {
       <p className="mt-6 text-sm text-center text-gray-600">
         Don’t have an account?{' '}
         <Link
-          href={'/register'}
+          href={route('register.create').toString()}
           className="text-indigo-600 hover:text-indigo-500 font-medium"
         >
           Sign up
