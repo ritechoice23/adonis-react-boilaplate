@@ -35,4 +35,5 @@ router
     .get('/register', [RegisterController, 'create'])
     .as('register.create')
     .use(middleware.guest())
+
 router.post('/register', [RegisterController, 'store']).as('register.store').use(middleware.guest())

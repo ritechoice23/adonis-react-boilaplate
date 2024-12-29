@@ -12,6 +12,13 @@ const inertiaConfig = defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.inertia.always(() => ctx.session?.flashMessages.get('errors')),
+    message: (ctx) => ctx.session?.flashMessages,
+    // @ts-ignore
+    auth: (ctx) => {
+      return {
+        user: ctx.auth?.user,
+      }
+    },
   },
 
   /**
@@ -26,5 +33,5 @@ const inertiaConfig = defineConfig({
 export default inertiaConfig
 
 declare module '@adonisjs/inertia/types' {
-  export interface SharedProps extends InferSharedProps<typeof inertiaConfig> {}
+  export interface SharedProps extends InferSharedProps<typeof inertiaConfig> { }
 }
