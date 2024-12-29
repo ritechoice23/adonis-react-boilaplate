@@ -1,10 +1,15 @@
 import { Link, useForm } from '@inertiajs/react'
+import AuthenticationLayout from '@/layouts/AuthenticationLayout'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Button } from '@/components/ui/button'
 
 function Register() {
   const { data, errors, setData, post, reset } = useForm({
     fullName: '',
     email: '',
     password: '',
+    password_confirmation: '',
   })
 
   const submit = (e: { preventDefault: () => void }) => {
@@ -16,57 +21,71 @@ function Register() {
     })
   }
   return (
-    <div className="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mx-auto">
+    <AuthenticationLayout>
       <h2 className="text-2xl font-bold mb-4 text-center">Create an Account</h2>
       <form onSubmit={submit}>
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium mb-2">
+          <Label htmlFor="name" className="block text-sm font-medium mb-2">
             Name
-          </label>
-          <input
+          </Label>
+          <Input
             onChange={(e) => setData('fullName', e.target.value)}
             value={data.fullName}
             type="text"
             id="name"
             placeholder="Enter your name"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full"
           />
           {errors.fullName && <span className="block text-sm text-red-500">{errors.fullName}</span>}
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
+          <Label htmlFor="email" className="block text-sm font-medium mb-2">
             Email
-          </label>
-          <input
+          </Label>
+          <Input
             onChange={(e) => setData('email', e.target.value)}
             value={data.email}
             type="email"
             id="email"
             placeholder="Enter your email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full"
           />
           {errors.email && <span className="block text-sm text-red-500">{errors.email}</span>}
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-medium mb-2">
+          <Label htmlFor="password" className="block text-sm font-medium mb-2">
             Password
-          </label>
-          <input
+          </Label>
+          <Input
             onChange={(e) => setData('password', e.target.value)}
             value={data.password}
             type="password"
             id="password"
             placeholder="Create a password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full"
           />
           {errors.password && <span className="block text-sm text-red-500">{errors.password}</span>}
         </div>
-        <button
+        <div className="mb-4">
+          <Label htmlFor="password" className="block text-sm font-medium mb-2">
+            Confirm Password
+          </Label>
+          <Input
+            onChange={(e) => setData('password_confirmation', e.target.value)}
+            value={data.password_confirmation}
+            type="password"
+            id="password"
+            placeholder="Confirm password"
+            className="w-full"
+          />
+          {errors.password && <span className="block text-sm text-red-500">{errors.password_confirmation}</span>}
+        </div>
+        <Button
           type="submit"
-          className="w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          className="w-full"
         >
           Sign Up
-        </button>
+        </Button>
         <p className="mt-4 text-sm text-center">
           Already have an account?{' '}
           <Link href="/login" className="text-blue-500 hover:underline">
@@ -74,7 +93,7 @@ function Register() {
           </Link>
         </p>
       </form>
-    </div>
+    </AuthenticationLayout>
   )
 }
 
