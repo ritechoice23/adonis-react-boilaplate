@@ -13,7 +13,7 @@ export default defineConfig({
    */
   resolve: {
     alias: {
-      '~/': `${getDirname(import.meta.url)}/inertia/`,
+      '@/': `${getDirname(import.meta.url)}/inertia/`,
     },
   },
 })
