@@ -15,6 +15,8 @@ const ForgotPasswordController = () => import('#controllers/auth/forgot_password
 const LoginsController = () => import('#controllers/auth/login_controller')
 const RegisterController = () => import('#controllers/auth/register_controller')
 
+
+router.jobs()
 router
     .get('/', async function ({ inertia }) {
         return inertia.render('home')
