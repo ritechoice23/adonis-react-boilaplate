@@ -76,6 +76,7 @@
     "@vinejs/vine": "^3.0.0",
     "adonisjs-jobs": "^0.0.21",
     "adonisjs-scheduler": "^1.0.8",
+    "better-sqlite3": "^11.7.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "edge.js": "^6.2.0",
