@@ -29,10 +29,7 @@ function Login() {
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <Label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <Label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
             Email Address
           </Label>
           <Input
@@ -40,16 +37,13 @@ function Login() {
             value={data.email}
             onChange={(e) => setData('email', e.target.value)}
             placeholder="you@example.com"
-            autoComplete='email'
+            autoComplete="email"
           />
           {errors.email && <span className="block text-sm text-red-500">{errors.email}</span>}
         </div>
 
         <div className="mb-6">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
             Password
           </label>
           <Input
@@ -70,10 +64,7 @@ function Login() {
               id="remember"
               className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
             />
-            <Label
-              htmlFor="remember"
-              className="ml-2 block text-sm text-gray-900"
-            >
+            <Label htmlFor="remember" className="ml-2 block text-sm text-gray-900">
               Remember me
             </Label>
           </div>
@@ -86,10 +77,7 @@ function Login() {
           </a>
         </div>
 
-        <Button
-          type="submit"
-          className='w-full'
-        >
+        <Button type="submit" className="w-full">
           Sign In
         </Button>
       </form>

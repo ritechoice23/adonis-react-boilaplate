@@ -1,7 +1,6 @@
 import { Head, Link, usePage } from '@inertiajs/react'
-import ApplicationLogo from '@/components/ApplicationLogo';
+import ApplicationLogo from '@/components/ApplicationLogo'
 import { route } from '@izzyjs/route/client'
-
 
 export default function Home() {
   const { auth } = usePage().props
@@ -13,8 +12,7 @@ export default function Home() {
           <ApplicationLogo className="w-16 h-16" />
         </a>
       </div>
-      <div className='flex justify-center items-center mt-4 gap-2'>
-
+      <div className="flex justify-center items-center mt-4 gap-2">
         {
           // @ts-ignore
           !auth?.user && (
@@ -29,9 +27,11 @@ export default function Home() {
           auth?.user && (
             <>
               <span>
-                welcome, {
+                welcome,{' '}
+                {
                   // @ts-ignore
-                  auth?.user?.fullName}
+                  auth?.user?.fullName
+                }
               </span>
 
               <Link

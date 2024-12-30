@@ -78,12 +78,11 @@ function Register() {
             placeholder="Confirm password"
             className="w-full"
           />
-          {errors.password && <span className="block text-sm text-red-500">{errors.password_confirmation}</span>}
+          {errors.password && (
+            <span className="block text-sm text-red-500">{errors.password_confirmation}</span>
+          )}
         </div>
-        <Button
-          type="submit"
-          className="w-full"
-        >
+        <Button type="submit" className="w-full">
           Sign Up
         </Button>
         <p className="mt-4 text-sm text-center">
