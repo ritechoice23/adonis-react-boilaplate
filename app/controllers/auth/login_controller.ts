@@ -3,7 +3,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import { loginValidator } from '#validators/login'
 import User from '#models/user'
-import { dd } from '@adonisjs/core/services/dumper'
 
 export default class LoginsController {
   public async create({ inertia }: HttpContext) {

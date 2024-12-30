@@ -1,8 +1,6 @@
 import PasswordReset from '#models/password_reset'
 import User from '#models/user'
 import type { HttpContext } from '@adonisjs/core/http'
-import { dd } from '@adonisjs/core/services/dumper'
-import hash from '@adonisjs/core/services/hash'
 import vine from '@vinejs/vine'
 import { DateTime } from 'luxon'
 
